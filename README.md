@@ -13,18 +13,18 @@ To start, the application is placed inside the docker image, then the image is r
 To deploy the app in the new env please follow the instructions:
 
 ### 1. Start and configure kubernates
-minikube start --vm-driver=docker   -   spin up default kubernates cluster
-minikube addons enable ingress  -   enable nginx ingress controller
+ - minikube start --vm-driver=docker   -   spin up default kubernates cluster
+ - minikube addons enable ingress  -   enable nginx ingress controller
 
 ### 2. Develop application and build image inside minikube env
-eval $(minikube docker-env)
-cd todo/app sub-directory
-docker build -t todo_web .
+ - eval $(minikube docker-env)
+ - cd todo/app sub-directory
+ - docker build -t todo_web .
 
 ### 3. Deploy application and related components into minikube cluster
-cd todo/TF directory
-(optional) adjust tfvars file with your wishes
-terraform init
-terraform apply -auto-approve
+ - cd todo/TF directory
+ - (optional) adjust tfvars file with your wishes
+ - terraform init
+ - terraform apply -auto-approve
 
 check Terraform output and open provided IP. ex: "load_balancer_ip = "192.168.49.2""
